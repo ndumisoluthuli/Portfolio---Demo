@@ -9,6 +9,14 @@
 
 <body>
     <style>
+        html{
+            scroll-behavior:smooth
+        }
+
+        a{
+            color:inherit;text-decoration:none
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,15 +25,84 @@
         }
 
         #header{
+            position: relative;
             width: 100%;
             height: 100vh;
-            background-image: url(images/Background.png);
+            /* background-image: url(images/Background.png); */
             background-size: cover;
             background-position: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #2E003E), url(images/Background.png);
+            /* filter: brightness(0.7) blur(2px); */
+
+            /* backdrop-filter: blur(5px); */
+            background-blend-mode: overlay;
+
+        }
+
+        #header::before{
+            content: '';
+            width: 100;
+            height: 100%;
+            background: linear-gradient(to right, rgba(106, 13, 173, 0.7), rgba(255, 0, 79, 0.7));
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+
+        #header .container{
+            position: relative;
+            z-index: 2;
+        }
+
+        #header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #2E003E);
+            z-index: 1;
+        }
+
+
+        
+
+        #home {
+            height: 100vh;
+            background: linear-gradient(to right, #6A0DAD, #FF004F);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-button {
+            background-color: #FFD700;
+            color: #2E003E;
+            padding: 5px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        body {
+            background-color: #2E003E;
+            color: #FFFFFF;
+        }
+
+        h1, h2, h3 {
+            color: #FFD700;
         }
 
         .container {
             padding: 10px 10%;
+            max-width:1100px;
+            margin:0 auto;
         }
 
         nav {
@@ -46,12 +123,44 @@
         }
 
         nav ul li a{
-            color: white;
+            color: #FFFFFF;
             text-decoration: none;
-            font-size: 18px
+            font-size: 18px;
+            position: relative;
         }
 
-        nav ul li {}
+        nav ul li a::after{
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #FF004F;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.5s;
+        }
+
+        nav ul li a:hover::after{
+            width: 100%;
+        }
+
+
+        .card {
+            background-color: #6A0DAD;
+            color: #FFFFFF;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .tag {
+            background-color: #FF004F;
+            color: #FFFFFF;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-right: 5px;
+            font-size: 14px;
+        }
 
     </style>
 
@@ -76,8 +185,9 @@
         <h2>Home</h2>
         <div class="header-container">
             <h1 class="headline">Ndumiso Luthuli</h1>
-            <h2 class="Tagline"><strong>Data Enthusiast | Aspiring Software Engineer | Python & Java Developer |
-                    Problem-Solver</strong></h2>
+            <p><strong>Data Enthusiast | Aspiring Software Engineer</strong></p>
+            <br>
+            <a href="#projects" class="cta-button">View My Work</a>
         </div>
     </section>
 
@@ -85,7 +195,7 @@
         <div class="about-me-container">
             <h2>About Me</h2>
 
-            <img src=".vscode/images/me.jpg" alt="This is me" style="width:100px; height:auto; border-radius:50%">
+            <img src="images/me.jpg" alt="This is me" style="width:100px; height:auto; border-radius:50%">
             <p class="sub">I’m Ndumiso, a Data Enthusiast/Developer focused on Power Bi, Python, Java, SQL, Web APIs and
                 build pipelines.
                 I care about maintainable code, good DX, and shipping continuously
